@@ -20,7 +20,7 @@ public class Scraper {
         try {
             driver = SeleniumUtils.buildDriver(Browser.CHROME);
             out = new PrintWriter(new BufferedWriter(new FileWriter("players.csv")));
-            out.println("id;name;lastName;price");
+            out.println("id;name;lastName;price;pricePerPoint;weeksPlayed");
     
             LoginPage login = new LoginPage(driver);
             login.go("https://fantasytennisleague.com/");
@@ -28,7 +28,7 @@ public class Scraper {
             login.setPassword("hkwe56db");
             login = login.validate();
             
-            for (int i = 600; i < 801; i++) {
+            for (int i = 1; i < 801; i++) {
                 
                 try {
                     String url = baseUrl + i ;
@@ -37,7 +37,10 @@ public class Scraper {
                     String firstName = pp.getPlayerFirstName();
                     String lastName = pp.getPlayerLastName();
                     String price = pp.getPlayerPrice();
-                    String data = i + DELIMITER + firstName + DELIMITER + lastName + DELIMITER + price;
+                    String pricePerPoint = pp.getPricePerPoint();
+                    String weeksPlayed = pp.getWeeksPlayed();
+                    String data = i + DELIMITER + firstName + DELIMITER + lastName + DELIMITER + price +
+                                     DELIMITER + pricePerPoint + DELIMITER + weeksPlayed ;
                     System.out.println(data);
                     out.println(data);
                     sleep();

@@ -52,6 +52,9 @@ public class SeleniumUtils {
             driver = new FirefoxDriver();
             break;
         case CHROME:
+            // Optional, if not specified, WebDriver will search your path for chromedriver.
+            // TODO extract property
+            System.setProperty("webdriver.chrome.driver", "/Users/agustina/Documents/drivers/chromedriver");
             driver = new ChromeDriver();
             break;
         case IEXPLORE:
