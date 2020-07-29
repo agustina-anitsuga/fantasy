@@ -24,8 +24,8 @@ public class Scraper {
     
             LoginPage login = new LoginPage(driver);
             login.go("https://fantasytennisleague.com/");
-            login.setUsername("adagnino@fibertel.com.ar");
-            login.setPassword("hkwe56db");
+            login.setUsername("a...@...com");
+            login.setPassword("********");
             login = login.validate();
             
             for (int i = 1; i < 801; i++) {
